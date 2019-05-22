@@ -1,0 +1,5 @@
+Time tracking for date /home/federico/Documents/timetracker/src/reports/22-5-2019_15:30.txt
+una hora,     22-5-2019 15:30hs
+una hora,     22-5-2019 15:30hs
+sdf,     22-5-2019 15:36hs
+hgf,     22-5-2019 15:36hs
