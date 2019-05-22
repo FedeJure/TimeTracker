@@ -1,1 +1,3 @@
-daemon
+wheel
+setuptools
+daemonize

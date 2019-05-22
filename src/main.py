@@ -4,6 +4,7 @@ import logging
 import time
 from daemonize import Daemonize
 import os
+
 pid = "/tmp/timeTracking.pid"
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -16,6 +17,8 @@ actualPath = os.path.dirname(os.path.abspath(__file__))
 
 _lapse = 1800
 
+
+
 def main():
     savedTime = time.localtime(time.time())
     logger.debug("Time Tracking started...")
@@ -26,14 +29,17 @@ def main():
       f.write("Time tracking for date {}".format(filepath))
 
     while True:
-      os.system("gnome-terminal -e 'bash -c \"python {}/timeTracker.py {}\"'".format(actualPath,filepath))
+      code = os.system("python {}/timeTracker.py {}".format(actualPath,filepath))
+      logger.debug("Exit code: {}".format(code))
+      if (code == 512):
+        daemon.close()
+        break
       time.sleep(_lapse)
 
     
     
 
-def close():
-  daemon.stop()
+
 
 daemon = Daemonize(app="time_tracking", pid=pid, action=main, keep_fds=keep_fds)
 daemon.start()
