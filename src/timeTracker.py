@@ -8,7 +8,7 @@ from Tkinter import *
 
 window = Tk()
 window.title("Timetracker!")
-window.geometry('300x150')
+window.geometry('300x300')
 filepath = sys.argv[1]
 
 if not filepath: exit(3)

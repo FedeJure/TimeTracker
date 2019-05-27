@@ -4,6 +4,7 @@ sudo apt-get install python-pip -y
 sudo apt-get install python-tk -y
 pip install -r requirements.txt
 
-sudo rm /usr/local/bin/timetracker
-sudo ln timetracker.sh /usr/local/bin/timetracker
+echo "python $(pwd)/src/main.py" > timetracker.sh
+chmod +x timetracker.sh
+sudo ln timetracker.sh /usr/bin/timetracker
 #etc.
