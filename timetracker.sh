@@ -1,1 +1,2 @@
-python src/main.py
+path=$(pwd)
+python $path/src/main.py
