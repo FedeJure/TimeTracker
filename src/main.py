@@ -20,7 +20,6 @@ filePathPrefix = actualPath + "/reports"
 _lapse = 1800
 
 
-
 def main(latest_file=None):
   savedTime = time.localtime(time.time())
   if (not latest_file):
@@ -43,7 +42,8 @@ def main(latest_file=None):
       break
     time.sleep(_lapse)
 
-
+def rerun_process():
+  
 
 
 def start():
