@@ -16,7 +16,11 @@ fh.setLevel(logging.DEBUG)
 logger.addHandler(fh)
 keep_fds = [fh.stream.fileno()]
 actualPath = os.path.dirname(os.path.abspath(__file__))
-filePathPrefix = actualPath + "/reports"
+
+userHome = os.path.expanduser("~")
+filePathPrefix = "{}/timetracker_reports".format(userHome)
+os.system("mkdir -p {}".format(filePathPrefix))
+
 latest_file= ''
 
 _lapse = 1800
@@ -24,7 +28,6 @@ _lapse = 1800
 
 def main(reportFile=None):
   savedTime = time.localtime(time.time())
-  logger.debug("sdfsdfsd{}".format(reportFile))
   if (not reportFile):
     logger.debug("Creating new report file")
     filepath = "{}/{}-{}-{}_{}:{}.txt".format(filePathPrefix,savedTime.tm_mday,savedTime.tm_mon,
@@ -60,7 +63,6 @@ def start():
       list_of_files = glob.glob('{}/*.txt'.format(filePathPrefix))
       if (len(list_of_files) > 0):        
         latest_file = max(list_of_files, key=os.path.getctime)
-        logger.debug(latest_file)
         logger.debug("Using report file: {}".format(latest_file))
         def rerun() :
           main(reportFile=latest_file)
