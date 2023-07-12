@@ -1,3 +1,4 @@
 wheel
 setuptools
 daemonize
+python-daemon
